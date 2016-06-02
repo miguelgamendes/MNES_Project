@@ -5,9 +5,16 @@ public class SwitchBehaviour : MonoBehaviour {
 
     public GameObject unlockTarget;
 
+    public GameObject disableTarget;
+
     public void Activate() {
         Debug.Log("Activated");
-        unlockTarget.GetComponent<DoorBehaviour>().ToggleLockState();
+        if(unlockTarget)
+            unlockTarget.GetComponent<DoorBehaviour>().ToggleLockState();
+        if(disableTarget)
+            disableTarget.SetActive(false);
+
+        this.GetComponent<AudioSource>().Play();
     }
 
 	// Use this for initialization
